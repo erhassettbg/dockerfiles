@@ -1,0 +1,30 @@
+version: "3.6"
+
+services:
+  mqtt:
+    container_name: mqtt
+    image: matteocollina/mosca:rpi
+    ports:
+      - 1883:1883
+    restart: always
+  mqtt-bridge:
+    container_name: mqtt-bridge
+    image: erhassettbg/smartthings-mqtt-bridge:rpi
+    links:
+      - mqtt
+    ports:
+      - 8080:8080
+    restart: always
+    volumes:
+      - /opt/mqtt-bridge:/config
+  hass:
+    container_name: hass
+    image: homeassistant/raspberrypi3-homeassistant
+    links: 
+      - mqtt
+    ports:
+      - 8123:8123
+    restart: always
+    volumes:
+      - /opt/hass/config:/config
+      - /etc/localtime:/etc/localtime:ro

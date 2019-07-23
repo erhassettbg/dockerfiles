@@ -1,0 +1,14 @@
+version: "3.6"
+
+services:
+  dehydrated:
+    container_name: dehydrated
+    environment:
+      - PROVIDER
+      - LEXICON_<PROVIDER>_USERNAME
+      - LEXICON_<PROVIDER>_TOKEN
+    image: erhassettbg/dehydrated
+    restart: always
+    volumes:
+      - /opt/dehydrated/output:/output
+      - /opt/dehydrated/config:/config
