@@ -1,0 +1,26 @@
+jobs:
+  build_and_push:
+    machine:
+      image: ubuntu-1604:201903-01
+    steps:
+      - checkout
+      - run:
+          name: Run script/ci
+          command: ./script/ci
+
+workflows:
+  version: 2
+  weekly:
+    triggers:
+      - schedule:
+          cron: "15 3 * * 0"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - build_and_push
+
+  on_push:
+    jobs:
+      - build_and_push
