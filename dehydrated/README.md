@@ -1,4 +1,3 @@
-[![](https://images.microbadger.com/badges/image/erhassettbg/dehydrated.svg)](https://microbadger.com/images/erhassettbg/dehydrated "Get your own image badge on microbadger.com")
 # dehydrated
 This is a docker image used to run dehydrated to automatically generate SSL certificates from [LetsEncrypt](https://letsencrypt.org/). There are two Dockerfiles included:
 * Dockerfile - based on the official `ubuntu:18.04` image.
