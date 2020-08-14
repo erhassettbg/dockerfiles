@@ -12,5 +12,4 @@ docker run -d --name jenkins \
 ```
 
 Ports can be changed as desired.
-To mount docker-machine to the container, add `-v $(which docker-machine):/usr/local/bin/docker-machine`.
 The jenkins home data directory can also be mounted by adding `-v <Local_Volume>:/var/jenkins_home`.
